@@ -6,6 +6,7 @@ class TopController < ApplicationController
             render "login"
         end
     end
+    
     def login
         logger.debug params[:uid]
         if User.find_by(uid: params[:uid]) and User.find_by(pass: params[:pass])
@@ -15,6 +16,7 @@ class TopController < ApplicationController
             render "error"
         end
     end
+    
     def logout
         session.delete(:login_uid)
         redirect_to top_main_path
